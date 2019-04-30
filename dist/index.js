@@ -118,7 +118,314 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
+var cos = Math.cos;
+var sin = Math.sin;
+var sqrt = Math.sqrt;
+var abs = Math.abs;
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 40;
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+var geometry = new THREE.DodecahedronGeometry(1, 3);
+var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.x = 1;
+scene.add(directionalLight);
+var light = new THREE.AmbientLight(0xffffff);
+scene.add(light);
+var angle = 0;
+var radius = 45;
+var boxes = [];
+var numBoxes = 5;
 
+for (var x = -numBoxes; x <= numBoxes; x++) {
+  for (var y = -numBoxes; y <= numBoxes; y++) {
+    var material = new THREE.MeshStandardMaterial();
+    var cube = new THREE.Mesh(geometry, material);
+    cube.position.x = x * 2;
+    cube.position.y = y * 2;
+    boxes.push(cube);
+    scene.add(cube);
+  }
+} // initial values
+
+
+var posZVal = 1;
+var scaleZVal = 1;
+var scaleXVal = 1;
+var scaleYVal = 1;
+var rotationZVal = 1;
+var rotationXVal = 1;
+var rotationYVal = 1;
+var colRVal = 1;
+var colGVal = 1;
+var colBVal = 1;
+var posZValIn = document.getElementById('shapePosZInput');
+var posZBtn = document.getElementById('shapePosZ');
+posZBtn.addEventListener('click', function () {
+  posZVal = posZValIn.value;
+});
+var scaleZValIn = document.getElementById('shapeScaleZInput');
+var scaleZBtn = document.getElementById('shapeScaleZ');
+scaleZBtn.addEventListener('click', function () {
+  scaleZVal = scaleZValIn.value;
+});
+var scaleXValIn = document.getElementById('shapeScaleXInput');
+var scaleXBtn = document.getElementById('shapeScaleX');
+scaleXBtn.addEventListener('click', function () {
+  scaleXVal = scaleXValIn.value;
+});
+var scaleYValIn = document.getElementById('shapeScaleYInput');
+var scaleYBtn = document.getElementById('shapeScaleY');
+scaleYBtn.addEventListener('click', function () {
+  scaleYVal = scaleYValIn.value;
+});
+var rotationZValIn = document.getElementById('shapeRotationZInput');
+var rotationZBtn = document.getElementById('shapeRotationZ');
+rotationZBtn.addEventListener('click', function () {
+  rotationZVal = rotationZValIn.value;
+});
+var rotationXValIn = document.getElementById('shapeRotationXInput');
+var rotationXBtn = document.getElementById('shapeRotationX');
+rotationXBtn.addEventListener('click', function () {
+  rotationXVal = rotationXValIn.value;
+});
+var rotationYValIn = document.getElementById('shapeRotationYInput');
+var rotationYBtn = document.getElementById('shapeRotationY');
+rotationYBtn.addEventListener('click', function () {
+  rotationYVal = rotationYValIn.value;
+});
+var colRValIn = document.getElementById('shapeColRInput');
+var colRBtn = document.getElementById('shapeColR');
+colRBtn.addEventListener('click', function () {
+  colRVal = colRValIn.value;
+});
+var colGValIn = document.getElementById('shapeColGInput');
+var colGBtn = document.getElementById('shapeColG');
+colGBtn.addEventListener('click', function () {
+  colGVal = colGValIn.value;
+});
+var colBValIn = document.getElementById('shapeColBInput');
+var colBBtn = document.getElementById('shapeColB');
+colBBtn.addEventListener('click', function () {
+  colBVal = colBValIn.value;
+});
+
+function setBoxPosZ(box, step, posZVal) {
+  var value = posZVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  var cos = Math.cos;
+  box.position.z = eval(value);
+}
+
+function setBoxScaleZ(box, step, scaleZVal) {
+  var value = scaleZVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.scale.z = eval(scaleZVal);
+}
+
+function setBoxScaleX(box, step, scaleXVal) {
+  var value = scaleXVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.scale.x = eval(scaleXVal);
+}
+
+function setBoxScaleY(box, step, scaleYVal) {
+  var value = scaleYVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.scale.y = eval(scaleYVal);
+}
+
+function setBoxRotationZ(box, step, rotationZVal) {
+  var value = rotationZVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.rotation.z = eval(rotationZVal);
+}
+
+function setBoxRotationX(box, step, rotationXVal) {
+  var value = rotationXVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.rotation.x = eval(rotationXVal);
+}
+
+function setBoxRotationY(box, step, rotationYVal) {
+  var value = rotationYVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.rotation.y = eval(rotationYVal);
+}
+
+function setBoxColorR(box, step, colRVal) {
+  var value = colRVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.material.color.r = eval(value);
+}
+
+function setBoxColorG(box, step, colGVal) {
+  var valueG = colGVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.material.color.g = eval(valueG);
+}
+
+function setBoxColorB(box, step, colBVal) {
+  var valueB = colBVal;
+  var x = box.position.x;
+  var y = box.position.y;
+  var md = abs(x) + abs(y);
+  var d = sqrt(x * x + y * y);
+  box.material.color.b = eval(valueB);
+}
+
+var shapeSelector = document.getElementById('shapeSelector');
+shapeSelector.addEventListener('change', function () {
+  return setShape();
+});
+
+function setShape() {
+  switch (shapeSelector.value) {
+    case "box":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.BoxGeometry(1, 1, 1);
+        cube.geometry = geometry.clone();
+      });
+      break;
+
+    case "ring":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.RingGeometry(1, 5, 6);
+        cube.geometry = geometry.clone();
+      });
+      break;
+
+    case "dodecahedron":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.DodecahedronGeometry(1, 3);
+        cube.geometry = geometry.clone();
+      });
+      break;
+
+    case "dodecahedron-large":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.DodecahedronGeometry(3, 1);
+        cube.geometry = geometry.clone();
+      });
+      break;
+
+    case "cylinder":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.CylinderGeometry(1, 1, 10, 12);
+        cube.geometry = geometry.clone();
+      });
+      break;
+
+    case "plane":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.PlaneGeometry(1, 1, 1);
+        cube.geometry = geometry.clone();
+      });
+      break;
+
+    case "octahedron":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.OctahedronGeometry(1, 0);
+        cube.geometry = geometry.clone();
+      });
+      break;
+
+    case "octahedron-large":
+      boxes.forEach(function (cube) {
+        cube.geometry.dispose();
+        geometry = new THREE.OctahedronGeometry(3, 0);
+        cube.geometry = geometry.clone();
+      });
+      break;
+  }
+} // camera position slider
+
+
+var cameraPosZslider = document.getElementById('cameraPosZRange');
+var cameraPosZoutput = document.getElementById('cameraPosZ');
+cameraPosZoutput.innerHTML = cameraPosZslider.value; // Display the default slider value
+// Update the current slider value (each time you drag the slider handle)
+
+cameraPosZslider.oninput = function () {
+  cameraPosZoutput.innerHTML = this.value;
+  camera.position.z = parseFloat(this.value);
+};
+
+var rotation = false;
+var rotationX = document.getElementById('rotateX');
+rotationX.addEventListener('click', function () {
+  return rotation = true;
+});
+
+function updateBoxes(step) {
+  for (var i = 0; i < boxes.length; i++) {
+    setBoxPosZ(boxes[i], step, posZVal);
+    setBoxScaleZ(boxes[i], step, scaleZVal);
+    setBoxScaleX(boxes[i], step, scaleXVal);
+    setBoxScaleY(boxes[i], step, scaleYVal);
+    setBoxRotationZ(boxes[i], step, rotationZVal);
+    setBoxRotationX(boxes[i], step, rotationXVal);
+    setBoxRotationY(boxes[i], step, rotationYVal);
+    setBoxColorR(boxes[i], step, colRVal);
+    setBoxColorG(boxes[i], step, colGVal);
+    setBoxColorB(boxes[i], step, colBVal);
+  }
+}
+
+var step = 5;
+
+var animate = function animate() {
+  requestAnimationFrame(animate);
+  step += 0.01;
+  updateBoxes(step);
+  renderer.render(scene, camera);
+
+  if (rotation) {
+    // Use Math.cos and Math.sin to set camera X and Z values based on angle. 
+    camera.position.x = radius * Math.cos(angle);
+    camera.position.z = radius * Math.sin(angle);
+    camera.position.y = radius * Math.sin(angle);
+    angle += 0.005;
+  }
+};
+
+animate();
 },{}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -147,7 +454,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52411" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61871" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
