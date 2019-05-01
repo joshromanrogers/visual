@@ -1,10 +1,18 @@
 body {
   margin: 0px;
   display: inline-block;
+  width: 100%;
 }
 
 .controller {
   display: inline-block;
+  width: 25%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  position: relative;
 }
 
 .container {
@@ -12,14 +20,27 @@ body {
   display: grid;
   -ms-grid-columns: 1;
       grid-template-columns: 1;
+  -ms-grid-rows: 10% 70% 15%;
+      grid-template-rows: 10% 70% 15%;
       grid-template-areas: "shape" "main" "camera";
-  width: 1000px;
+  height: 70vh;
+  -ms-grid-row-align: center;
+      align-self: center;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
 }
 
 .shape {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: shape;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 .main {
@@ -28,17 +49,51 @@ body {
   grid-area: main;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3;
-      grid-template-columns: 3;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: 22% 53% 25%;
+      grid-template-columns: 22% 53% 25%;
   -ms-grid-rows: 2;
       grid-template-rows: 2;
-      grid-template-areas: "posZTitle posZInput posZBtn" "scaleXTitle scaleXInput scaleXBtn" "scaleYTitle scaleYInput scaleYBtn" "scaleZTitle scaleZInput scaleZBtn" "rotationXTitle rotationXInput rotationXBtn" "rotationYTitle rotationYInput rotationYBtn" "rotationZTitle rotationZInput rotationZBtn" "colRTitle colRInput colRBtn" "colGTitle colGInput colGBtn" "colBTitle colBInput colBBtn";
-  height: 500px;
+      grid-template-areas: "posZTitle posZInput posZBtn" "scaleXTitle scaleXInput scaleXBtn" "scaleYTitle scaleYInput scaleYBtn" "scaleZTitle scaleZInput scaleZBtn" "rotationXTitle rotationXInput rotationXBtn" "rotationYTitle rotationYInput rotationYBtn" "rotationZTitle rotationZInput rotationZBtn" "colRTitle colRInput colRBtn" "colBTitle colBInput colBBtn" "colGTitle colGInput colGBtn";
+}
+
+button {
+  border: none;
+  margin: 0 5%;
+  height: 60%;
+}
+
+span {
+  margin: 0 2% 0 10%;
 }
 
 .camera {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: camera;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 32% 68%;
+      grid-template-columns: 32% 68%;
+  -ms-grid-rows: 2;
+      grid-template-rows: 2;
+      grid-template-areas: "cameraPosTitle cameraPosSlide" "cameraRotateTitle cameraRotate";
+}
+
+.cameraPosSlide {
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.camera > span {
+  margin: 0 0 0 10%;
 }
 /*# sourceMappingURL=main.css.map */

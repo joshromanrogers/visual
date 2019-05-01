@@ -64,22 +64,17 @@
                 <button type="button" id="scaleZBtn">update</button>
 
                 <!-- shape rotation x -->
-                <span class="rotationXTitle">rotation x</span>
+                <span class="rotationXTitle">rot x</span>
                 <input type="text" name="rotationXInput" id="rotationXInput" value="cos(step*md)">
                 <button type="button" id="rotationXBtn">update</button>
 
                 <!-- shape rotation y -->
-                <span class="rotationYTitle">rotation y</span>
+                <span class="rotationYTitle">rot y</span>
                 <input type="text" name="rotationYInput" id="rotationYInput" value="cos(step*md)">
                 <button type="button" id="rotationYBtn">update</button>
 
                 <!-- shape rotation z -->
-                <span class="rotationZTitle">rotation z</span>
-                <input type="text" name="rotationZInput" id="rotationZInput" value="cos(step*md)">
-                <button type="button" id="rotationZBtn">update</button>
-
-                <!-- shape rotation z -->
-                <span class="rotationZTitle">rotation z</span>
+                <span class="rotationZTitle">rot z</span>
                 <input type="text" name="rotationZInput" id="rotationZInput" value="cos(step*md)">
                 <button type="button" id="rotationZBtn">update</button>
 
@@ -89,32 +84,37 @@
                 <input type="text" name="colRInput" id="colRInput" value="cos(step*md)">
                 <button type="button" id="colRBtn">update</button>
 
-                <!-- shape colour [green] -->
-                <span class="colGTitle">green</span>
-                <input type="text" name="colGInput" id="colGInput" value="cos(step*md)">
-                <button type="button" id="colGBtn">update</button>
-
                 <!-- shape colour [blue] -->
                 <span class="colBTitle">blue</span>
                 <input type="text" name="colBInput" id="colBInput" value="cos(step*md)">
                 <button type="button" id="colBBtn">update</button>
 
+                <!-- shape colour [green] -->
+                <span class="colGTitle">green</span>
+                <input type="text" name="colGInput" id="colGInput" value="cos(step*md)">
+                <button type="button" id="colGBtn">update</button>
+
             </div>
 
             <!-- THIRD ROW -->
             <div class="camera">
-                <input type="checkbox" id="rotateX">Rotate
-                <!-- position slider -->
-                <div>Camera position z slider: <span id="cameraPosZ"></span></div>
-                <div class="slidecontainer">
+
+                <!-- camera position slider -->
+                <span class="cameraPosTitle">cam pos<span id="cameraPosZ"></span></span>
+                <div class="cameraPosSlide">
                     <input type="range" min="10" max="90" step="1" value="40" class="slider" id="cameraPosZRange" />
                 </div>
+                
+                <!-- camera rotation checkbox -->
+                <span class="cameraRotateTitle">cam rot</span>
+                <input type="checkbox" id="cameraRotate">
+                
+
             </div>
         </div>
     </div>
-
-    <!-- import the webpage's javascript file -->
-    <!-- <script src="./index.js"></script> -->
+<!-- 
+ <script src="./index.js"></script> -->
 </body>
 
 </html>
