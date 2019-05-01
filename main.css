@@ -1,18 +1,30 @@
 body {
   margin: 0px;
-  display: inline-block;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% 75%;
+      grid-template-columns: 25% 75%;
+      grid-template-areas: "controller canvas";
   width: 100%;
+  height: 100vh;
 }
 
 .controller {
   display: inline-block;
-  width: 25%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   -ms-grid-column-align: center;
       justify-self: center;
   position: relative;
+}
+
+canvas {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .container {
@@ -26,10 +38,6 @@ body {
   height: 70vh;
   -ms-grid-row-align: center;
       align-self: center;
-  top: 50%;
-  position: absolute;
-  -webkit-transform: translateY(20%);
-          transform: translateY(20%);
 }
 
 .shape {
@@ -55,8 +63,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-grid-columns: 22% 53% 25%;
-      grid-template-columns: 22% 53% 25%;
+  -ms-grid-columns: 25% 50% 25%;
+      grid-template-columns: 25% 50% 25%;
   -ms-grid-rows: 2;
       grid-template-rows: 2;
       grid-template-areas: "posZTitle posZInput posZBtn" "scaleXTitle scaleXInput scaleXBtn" "scaleYTitle scaleYInput scaleYBtn" "scaleZTitle scaleZInput scaleZBtn" "rotationXTitle rotationXInput rotationXBtn" "rotationYTitle rotationYInput rotationYBtn" "rotationZTitle rotationZInput rotationZBtn" "colRTitle colRInput colRBtn" "colBTitle colBInput colBBtn" "colGTitle colGInput colGBtn";
@@ -65,11 +73,15 @@ body {
 button {
   border: none;
   margin: 0 5%;
-  height: 60%;
+  height: 20px;
+}
+
+input {
+  height: 20px;
 }
 
 span {
-  margin: 0 2% 0 10%;
+  margin: 0 5% 0 10%;
 }
 
 .camera {
