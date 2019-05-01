@@ -50,62 +50,62 @@ let colRVal = 1;
 let colGVal = 1;
 let colBVal = 1;
 
-let posZValIn = document.getElementById("shapePosZInput");
-let posZBtn = document.getElementById("shapePosZ");
+let posZValIn = document.getElementById("posZInput");
+let posZBtn = document.getElementById("posZBtn");
 posZBtn.addEventListener("click", function() {
 	posZVal = posZValIn.value;
 });
 
-let scaleZValIn = document.getElementById("shapeScaleZInput");
-let scaleZBtn = document.getElementById("shapeScaleZ");
+let scaleZValIn = document.getElementById("scaleZInput");
+let scaleZBtn = document.getElementById("scaleZBtn");
 scaleZBtn.addEventListener("click", function() {
 	scaleZVal = scaleZValIn.value;
 });
 
-let scaleXValIn = document.getElementById("shapeScaleXInput");
-let scaleXBtn = document.getElementById("shapeScaleX");
+let scaleXValIn = document.getElementById("scaleXInput");
+let scaleXBtn = document.getElementById("scaleXBtn");
 scaleXBtn.addEventListener("click", function() {
 	scaleXVal = scaleXValIn.value;
 });
 
-let scaleYValIn = document.getElementById("shapeScaleYInput");
-let scaleYBtn = document.getElementById("shapeScaleY");
+let scaleYValIn = document.getElementById("scaleYInput");
+let scaleYBtn = document.getElementById("scaleYBtn");
 scaleYBtn.addEventListener("click", function() {
 	scaleYVal = scaleYValIn.value;
 });
 
-let rotationZValIn = document.getElementById("shapeRotationZInput");
-let rotationZBtn = document.getElementById("shapeRotationZ");
+let rotationZValIn = document.getElementById("rotationZInput");
+let rotationZBtn = document.getElementById("rotationZBtn");
 rotationZBtn.addEventListener("click", function() {
 	rotationZVal = rotationZValIn.value;
 });
 
-let rotationXValIn = document.getElementById("shapeRotationXInput");
-let rotationXBtn = document.getElementById("shapeRotationX");
+let rotationXValIn = document.getElementById("rotationXInput");
+let rotationXBtn = document.getElementById("rotationXBtn");
 rotationXBtn.addEventListener("click", function() {
 	rotationXVal = rotationXValIn.value;
 });
 
-let rotationYValIn = document.getElementById("shapeRotationYInput");
-let rotationYBtn = document.getElementById("shapeRotationY");
+let rotationYValIn = document.getElementById("rotationYInput");
+let rotationYBtn = document.getElementById("rotationYBtn");
 rotationYBtn.addEventListener("click", function() {
 	rotationYVal = rotationYValIn.value;
 });
 
-let colRValIn = document.getElementById("shapeColRInput");
-let colRBtn = document.getElementById("shapeColR");
+let colRValIn = document.getElementById("colRInput");
+let colRBtn = document.getElementById("colRBtn");
 colRBtn.addEventListener("click", function() {
 	colRVal = colRValIn.value;
 });
 
-let colGValIn = document.getElementById("shapeColGInput");
-let colGBtn = document.getElementById("shapeColG");
+let colGValIn = document.getElementById("colGInput");
+let colGBtn = document.getElementById("colGBtn");
 colGBtn.addEventListener("click", function() {
 	colGVal = colGValIn.value;
 });
 
-let colBValIn = document.getElementById("shapeColBInput");
-let colBBtn = document.getElementById("shapeColB");
+let colBValIn = document.getElementById("colBInput");
+let colBBtn = document.getElementById("colBBtn");
 colBBtn.addEventListener("click", function() {
 	colBVal = colBValIn.value;
 });
@@ -319,7 +319,7 @@ cameraPosZslider.oninput = function () {
 
 let rotation = false;
 
-let rotationX = document.getElementById("rotateX");
+let rotationX = document.getElementById("cameraRotate");
 rotationX.addEventListener("click", () => rotation = true);
 
 function updateBoxes(step) {
