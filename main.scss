@@ -1,10 +1,54 @@
-.controller {
-    width: 39%;
+body {
+    margin: 0px;
     display: inline-block;
 }
 
-canvas {
-    width: 60% !important;
-    height: auto !important;
-    display: inline-block !important;
+.controller {
+
+    display: inline-block;
 }
+
+// canvas {
+//     width: 60% !important;
+//     height: auto !important;
+//     display: inline-block !important;
+// }
+
+.container {
+    display: grid;
+    grid-template-columns: 1;
+    // grid-template-rows: 15% 60% 25%;
+    grid-template-areas:
+        "shape"
+        "main"
+        "camera";
+    width: 1000px;
+}
+
+.shape {
+    grid-area: shape;
+}
+
+.main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 3;
+    grid-template-rows: 2;
+    grid-template-areas:
+        "posZTitle posZInput posZBtn"
+        "scaleXTitle scaleXInput scaleXBtn"
+        "scaleYTitle scaleYInput scaleYBtn"
+        "scaleZTitle scaleZInput scaleZBtn"
+        "rotationXTitle rotationXInput rotationXBtn"
+        "rotationYTitle rotationYInput rotationYBtn"
+        "rotationZTitle rotationZInput rotationZBtn"
+        "colRTitle colRInput colRBtn"
+        "colGTitle colGInput colGBtn"
+        "colBTitle colBInput colBBtn";
+    height: 500px;
+}
+
+.camera {
+    grid-area: camera;
+}
+

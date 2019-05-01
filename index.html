@@ -22,89 +22,99 @@
 
 <body>
     <div class="controller">
-        <!-- position slider -->
-        <div>Camera position z slider: <span id="cameraPosZ"></span></div>
-        <div class="slidecontainer">
-            <input type="range" min="10" max="90" step="1" value="40" class="slider" id="cameraPosZRange" />
-        </div>
-        <!-- shape pos z -->
-        <div class="shapePosZInput">
-            Shape Pos Z:<input type="text" name="shapePosZInput" id="shapePosZInput" value="cos(step*md)">
-            <button type="button" id="shapePosZ">update</button>
-        </div>
-        <!-- shape scale z -->
-        <div class="shapeScaleZInput">
-            Shape Scale Z:<input type="text" name="shapeScaleZInput" id="shapeScaleZInput" value="cos(step*md)">
-            <button type="button" id="shapeScaleZ">update</button>
-        </div>
-        <!-- shape scale x -->
-        <div class="shapeScaleXInput">
-            Shape Scale X:<input type="text" name="shapeScaleXInput" id="shapeScaleXInput" value="cos(step*md)">
-            <button type="button" id="shapeScaleX">update</button>
-        </div>
-        <!-- shape scale y -->
-        <div class="shapeScaleYInput">
-            Shape Scale Y:<input type="text" name="shapeScaleYInput" id="shapeScaleYInput" value="cos(step*md)">
-            <button type="button" id="shapeScaleY">update</button>
-        </div>
-        <!-- shape rotation z -->
-        <div class="shapeRotationZInput">
-            Shape Rotation Z:<input type="text" name="shapeRotationZInput" id="shapeRotationZInput"
-                value="cos(step*md)">
-            <button type="button" id="shapeRotationZ">update</button>
-        </div>
-        <!-- shape rotation x -->
-        <div class="shapeRotationXInput">
-            Shape Rotation X:<input type="text" name="shapeRotationXInput" id="shapeRotationXInput"
-                value="cos(step*md)">
-            <button type="button" id="shapeRotationX">update</button>
-        </div>
-        <!-- shape rotation y -->
-        <div class="shapeRotationYInput">
-            Shape Rotation Y:<input type="text" name="shapeRotationYInput" id="shapeRotationYInput"
-                value="cos(step*md)">
-            <button type="button" id="shapeRotationY">update</button>
-        </div>
+        <!-- CONTROLLER CONTAINER [CSS GRID] -->
+        <div class="container">
+            <!-- FIRST ROW -->
+            <div class="shape">
+                <!-- shape selector -->
+                <select id="shapeSelector">
+                    <!-- shapes to choose from -->
+                    <option value="dodecahedron">Dodecahedron</option>
+                    <option value="dodecahedron-large">Dodecahedron [large]</option>
+                    <option value="ring">Ring</option>
+                    <option value="box">Box</option>
+                    <option value="cylinder">Cylinder</option>
+                    <option value="plane">Plane</option>
+                    <option value="octahedron">Octahedron</option>
+                    <option value="octahedron-large">Octahedron [large]</option>
+                </select>
+            </div>
 
-        <!-- COLOURS -->
-        <!-- shape colour [red] -->
-        <div class="shapeColRInput">
-            Shape Col R:<input type="text" name="shapeColRInput" id="shapeColRInput" value="cos(step*md)">
-            <button type="button" id="shapeColR">update</button>
+            <!-- SECOND ROW -->
+            <div class="main">
+
+                <!-- shape pos z -->
+                <span class="posZTitle">pos z</span>
+                <input type="text" name="posZInput" id="posZInput" value="cos(step*md)">
+                <button type="button" id="posZBtn">update</button>
+
+                <!-- shape scale x -->
+                <span class="scaleXTitle">scale x</span>
+                <input type="text" name="scaleXInput" id="scaleXInput" value="cos(step*md)">
+                <button type="button" id="scaleXBtn">update</button>
+
+                <!-- shape scale y -->
+                <span class="scaleYTitle">scale y</span>
+                <input type="text" name="shapeScaleYInput" id="scaleYInput" value="cos(step*md)">
+                <button type="button" id="scaleYBtn">update</button>
+
+                <!-- shape scale z -->
+                <span class="scaleZTitle">scale z</span>
+                <input type="text" name="shapeScaleZInput" id="scaleZInput" value="cos(step*md)">
+                <button type="button" id="scaleZBtn">update</button>
+
+                <!-- shape rotation x -->
+                <span class="rotationXTitle">rotation x</span>
+                <input type="text" name="rotationXInput" id="rotationXInput" value="cos(step*md)">
+                <button type="button" id="rotationXBtn">update</button>
+
+                <!-- shape rotation y -->
+                <span class="rotationYTitle">rotation y</span>
+                <input type="text" name="rotationYInput" id="rotationYInput" value="cos(step*md)">
+                <button type="button" id="rotationYBtn">update</button>
+
+                <!-- shape rotation z -->
+                <span class="rotationZTitle">rotation z</span>
+                <input type="text" name="rotationZInput" id="rotationZInput" value="cos(step*md)">
+                <button type="button" id="rotationZBtn">update</button>
+
+                <!-- shape rotation z -->
+                <span class="rotationZTitle">rotation z</span>
+                <input type="text" name="rotationZInput" id="rotationZInput" value="cos(step*md)">
+                <button type="button" id="rotationZBtn">update</button>
+
+                <!-- COLOURS -->
+                <!-- shape colour [red] -->
+                <span class="colRTitle">red</span>
+                <input type="text" name="colRInput" id="colRInput" value="cos(step*md)">
+                <button type="button" id="colRBtn">update</button>
+
+                <!-- shape colour [green] -->
+                <span class="colGTitle">green</span>
+                <input type="text" name="colGInput" id="colGInput" value="cos(step*md)">
+                <button type="button" id="colGBtn">update</button>
+
+                <!-- shape colour [blue] -->
+                <span class="colBTitle">blue</span>
+                <input type="text" name="colBInput" id="colBInput" value="cos(step*md)">
+                <button type="button" id="colBBtn">update</button>
+
+            </div>
+
+            <!-- THIRD ROW -->
+            <div class="camera">
+                <input type="checkbox" id="rotateX">Rotate
+                <!-- position slider -->
+                <div>Camera position z slider: <span id="cameraPosZ"></span></div>
+                <div class="slidecontainer">
+                    <input type="range" min="10" max="90" step="1" value="40" class="slider" id="cameraPosZRange" />
+                </div>
+            </div>
         </div>
-        <!-- shape colour [green] -->
-        <div class="shapeColGInput">
-            Shape Col G:<input type="text" name="shapeColGInput" id="shapeColGInput" value="cos(step*md)">
-            <button type="button" id="shapeColG">update</button>
-        </div>
-        <!-- shape colour [blue] -->
-        <div class="shapeColBInput">
-            Shape Col B:<input type="text" name="shapeColBInput" id="shapeColBInput" value="cos(step*md)">
-            <button type="button" id="shapeColB">update</button>
-        </div>
-
-
-        <!-- shape selector -->
-        <h4>Shape:</h4>
-        <!-- select tag -->
-        <select id="shapeSelector">
-            <!-- shapes to choose from -->
-            <option value="dodecahedron">Dodecahedron</option>
-            <option value="dodecahedron-large">Dodecahedron [large]</option>
-            <option value="ring">Ring</option>
-            <option value="box">Box</option>
-            <option value="cylinder">Cylinder</option>
-            <option value="plane">Plane</option>
-            <option value="octahedron">Octahedron</option>
-            <option value="octahedron-large">Octahedron [large]</option>
-
-
-        </select>
-
-        <input type="checkbox" id="rotateX">Rotate
     </div>
-     <!-- import the webpage's javascript file -->
-     <script src="./index.js"></script>
+
+    <!-- import the webpage's javascript file -->
+    <!-- <script src="./index.js"></script> -->
 </body>
 
 </html>

@@ -1,11 +1,44 @@
-.controller {
-  width: 39%;
+body {
+  margin: 0px;
   display: inline-block;
 }
 
-canvas {
-  width: 60% !important;
-  height: auto !important;
-  display: inline-block !important;
+.controller {
+  display: inline-block;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1;
+      grid-template-columns: 1;
+      grid-template-areas: "shape" "main" "camera";
+  width: 1000px;
+}
+
+.shape {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: shape;
+}
+
+.main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: main;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3;
+      grid-template-columns: 3;
+  -ms-grid-rows: 2;
+      grid-template-rows: 2;
+      grid-template-areas: "posZTitle posZInput posZBtn" "scaleXTitle scaleXInput scaleXBtn" "scaleYTitle scaleYInput scaleYBtn" "scaleZTitle scaleZInput scaleZBtn" "rotationXTitle rotationXInput rotationXBtn" "rotationYTitle rotationYInput rotationYBtn" "rotationZTitle rotationZInput rotationZBtn" "colRTitle colRInput colRBtn" "colGTitle colGInput colGBtn" "colBTitle colBInput colBBtn";
+  height: 500px;
+}
+
+.camera {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: camera;
 }
 /*# sourceMappingURL=main.css.map */
