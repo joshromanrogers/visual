@@ -1,3 +1,8 @@
+html {
+  font-family: roboto;
+  font-size: 13px;
+}
+
 body {
   margin: 0px;
   display: -ms-grid;
@@ -7,6 +12,22 @@ body {
       grid-template-areas: "controller canvas";
   width: 100%;
   height: 100vh;
+  background-color: #111;
+}
+
+input, button, select {
+  font-size: 13px;
+  background-color: #333;
+  color: #f6f6f6;
+}
+
+span {
+  color: #f6f6f6;
+}
+
+input {
+  border-color: white;
+  border-style: none;
 }
 
 .controller {
@@ -47,8 +68,6 @@ canvas {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  -ms-grid-column-align: center;
-      justify-self: center;
 }
 
 .main {
@@ -63,21 +82,28 @@ canvas {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-grid-columns: 25% 50% 25%;
-      grid-template-columns: 25% 50% 25%;
+  -ms-grid-columns: 20% 55% 25%;
+      grid-template-columns: 20% 55% 25%;
   -ms-grid-rows: 2;
       grid-template-rows: 2;
-      grid-template-areas: "posZTitle posZInput posZBtn" "scaleXTitle scaleXInput scaleXBtn" "scaleYTitle scaleYInput scaleYBtn" "scaleZTitle scaleZInput scaleZBtn" "rotationXTitle rotationXInput rotationXBtn" "rotationYTitle rotationYInput rotationYBtn" "rotationZTitle rotationZInput rotationZBtn" "colRTitle colRInput colRBtn" "colBTitle colBInput colBBtn" "colGTitle colGInput colGBtn";
+      grid-template-areas: "posZTitle posZInput posZBtn" "scaleXTitle scaleXInput scaleXBtn" "scaleYTitle scaleYInput scaleYBtn" "scaleZTitle scaleZInput scaleZBtn" "rotationXTitle rotationXInput rotationXBtn" "rotationYTitle rotationYInput rotationYBtn" "rotationZTitle rotationZInput rotationZBtn" "colRTitle colRInput colRBtn" "colGTitle colGInput colGBtn" "colBTitle colBInput colBBtn";
 }
 
 button {
   border: none;
   margin: 0 5%;
-  height: 20px;
+  height: 28px;
+  width: 60px;
+  background-color: #222;
+}
+
+#shapeSelector {
+  height: 50%;
 }
 
 input {
-  height: 20px;
+  height: 10px;
+  padding: 9px;
 }
 
 span {
@@ -93,8 +119,8 @@ span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-grid-columns: 32% 68%;
-      grid-template-columns: 32% 68%;
+  -ms-grid-columns: 35% 68%;
+      grid-template-columns: 35% 68%;
   -ms-grid-rows: 2;
       grid-template-rows: 2;
       grid-template-areas: "cameraPosTitle cameraPosSlide" "cameraRotateTitle cameraRotate";
@@ -106,6 +132,6 @@ span {
 }
 
 .camera > span {
-  margin: 0 0 0 10%;
+  margin: 0 0 0 9%;
 }
 /*# sourceMappingURL=main.css.map */

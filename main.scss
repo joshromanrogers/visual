@@ -1,3 +1,8 @@
+html {
+    font-family: roboto;
+    font-size: 13px;
+}
+
 body {
     margin: 0px;
     display: grid;
@@ -5,6 +10,22 @@ body {
     grid-template-areas: "controller canvas";
     width: 100%;
     height: 100vh;
+    background-color: #111;
+}
+
+input, button, select {
+    font-size: 13px;
+    background-color: #333;
+    color: #f6f6f6;
+}
+
+span {
+    color: #f6f6f6;
+}
+
+input {
+    border-color: white;
+    border-style: none;
 }
 
 .controller {
@@ -34,7 +55,7 @@ canvas {
 .shape {
     grid-area: shape;
     align-self: center;
-    justify-self: center;
+    // justify-self: center;
 }
 
 .main {
@@ -42,7 +63,7 @@ canvas {
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 20% 55% 25%;
     grid-template-rows: 2;
     grid-template-areas:
         "posZTitle posZInput posZBtn"
@@ -53,18 +74,25 @@ canvas {
         "rotationYTitle rotationYInput rotationYBtn"
         "rotationZTitle rotationZInput rotationZBtn"
         "colRTitle colRInput colRBtn"
-        "colBTitle colBInput colBBtn"
-        "colGTitle colGInput colGBtn";
+        "colGTitle colGInput colGBtn"
+        "colBTitle colBInput colBBtn";
 }
 
 button {
     border: none;
     margin: 0 5%;
-    height: 20px;
+    height: 28px;
+    width: 60px;
+    background-color: #222;
+}
+
+#shapeSelector {
+    height: 50%;
 }
 
 input {
-    height: 20px;
+    height: 10px;
+    padding: 9px;
 }
 
 span {
@@ -76,7 +104,7 @@ span {
     display: grid;
     align-items: center;
     // justify-content: center;
-    grid-template-columns: 32% 68%;
+    grid-template-columns: 35% 68%;
     grid-template-rows: 2;
     grid-template-areas: 
         "cameraPosTitle cameraPosSlide"
@@ -90,6 +118,6 @@ span {
 }
 
 .camera > span {
-    margin: 0 0 0 10%;
+    margin: 0 0 0 9%;
 }
 
