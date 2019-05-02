@@ -12,7 +12,7 @@ renderer.domElement.id = "canvas";
 renderer.setSize( window.innerWidth/100*70, window.innerHeight/100*70 );
 document.body.appendChild( renderer.domElement );
 
-var geometry = new THREE.DodecahedronGeometry(1, 3);
+var geometry = new THREE.BoxGeometry(1, 1, 1);
 
 var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
 directionalLight.position.x = 1;
@@ -21,18 +21,15 @@ scene.add( directionalLight );
 var light = new THREE.AmbientLight( 0xffffff );
 scene.add(light);
 
-var angle = 0;
-var radius = 45; 
-
 var boxes = [];
 var numBoxes = 5;
 
 for (let x = -numBoxes; x <= numBoxes; x++) {
 	for (let y = -numBoxes; y <= numBoxes; y++) {
-		var material = new THREE.MeshStandardMaterial( );
+		var material = new THREE.MeshBasicMaterial( { color : 0xff0000 } );
 		var cube = new THREE.Mesh( geometry, material );
-		cube.position.x = x * 2;
-		cube.position.y = y * 2;
+		cube.position.x = x * 1.1;
+		cube.position.y = y * 1.1;
 		boxes.push(cube);
 		scene.add(cube);
 	}
@@ -343,27 +340,26 @@ function updateBoxes(step) {
 }
 
 
-let step = 5;
+let step = 0;
 
 var animate = function () {
   
 	requestAnimationFrame( animate );
-	step += 0.01;
+	step += 0.05;
 	updateBoxes (step);
 	renderer.render( scene, camera );
   
-	if(rotation) {
-		// Use Math.cos and Math.sin to set camera X and Z values based on angle. 
-		camera.position.x = radius * Math.cos( angle ); 
-		camera.position.z = radius * Math.sin( angle );
-		camera.position.y = radius * Math.sin( angle );
+	// if(rotation) {
+	// 	// Use Math.cos and Math.sin to set camera X and Z values based on angle. 
+	// 	camera.position.x = angle;
+	// 	// camera.position.z = radius * Math.sin( angle );
+	// 	camera.position.y = angle;
   
-		angle += 0.005;
-	}
+	// 	angle += 0.05;
+	// }
 };
 
 animate();
-
 
 let info = document.getElementsByClassName("info")[0];
 let modes = document.getElementsByClassName("mode");
@@ -449,12 +445,27 @@ let toggleMode = () => {
 
 	}
 
-
-
-
-
-	
-
-
 };
+
+// INFO
+
+let closeBtn = document.querySelector(".closebtn");
+let openBtn = document.querySelector(".info");
+
+// navigation bar open and close
+openBtn.addEventListener("click", () => openNav());
+closeBtn.addEventListener("click", () => closeNav());
+
+// Navigation media queries
+function openNav() {
+	document.getElementById("side-nav").style.width = "100%";
+	document.querySelectorAll(".side-nav-p").forEach(x => x.style.width = "700px");
+
+}
+
+
+// Set the width of the side navigation to 0 
+function closeNav() {
+	document.getElementById("side-nav").style.width = "0";
+}
 
