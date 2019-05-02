@@ -3,6 +3,28 @@ html {
   font-size: 13px;
 }
 
+.mode, .info {
+  color: white;
+  position: absolute;
+}
+
+.mode {
+  margin: 12px;
+  left: 91%;
+  font-size: 29px;
+}
+
+.info {
+  margin: 5px;
+  left: 95%;
+  font-size: 37px;
+}
+
+.mode:hover, .info:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 body {
   margin: 0px;
   display: -ms-grid;

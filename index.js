@@ -32,11 +32,14 @@ for (let x = -numBoxes; x <= numBoxes; x++) {
 		var material = new THREE.MeshStandardMaterial( );
 		var cube = new THREE.Mesh( geometry, material );
 		cube.position.x = x * 2;
-		cube.position.y = y * 2;
+        cube.position.y = y * 2;
 		boxes.push(cube);
 		scene.add(cube);
 	}
 }
+
+var vector = new THREE.Vector3(); // create once and reuse it!
+camera.getWorldDirection( vector );
 
 // initial values
 let posZVal = 1;
@@ -338,6 +341,7 @@ function updateBoxes(step) {
 
 	}
 }
+
 
 let step = 5;
 
