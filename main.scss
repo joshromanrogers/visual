@@ -3,8 +3,8 @@ html {
     font-size: 13px;
 }
 
-.mode, .info {
-    color: white;
+.mode,
+.info {
     position: absolute;
 }
 
@@ -12,7 +12,6 @@ html {
     margin: 12px;
     left: 91%;
     font-size: 29px;
-
 }
 
 .info {
@@ -21,7 +20,8 @@ html {
     font-size: 37px;
 }
 
-.mode:hover, .info:hover {
+.mode:hover,
+.info:hover {
     opacity: 0.5;
     cursor: pointer;
 }
@@ -33,21 +33,17 @@ body {
     grid-template-areas: "controller canvas";
     width: 100%;
     height: 100vh;
-    background-color: #111;
+    background-color: #f6f6f6;
 }
 
-input, button, select {
+input,
+button,
+select {
     font-size: 13px;
-    background-color: #333;
-    color: #f6f6f6;
-}
 
-span {
-    color: #f6f6f6;
 }
 
 input {
-    border-color: white;
     border-style: none;
 }
 
@@ -71,14 +67,13 @@ canvas {
         "shape"
         "main"
         "camera";
-        height: 70vh;
-        align-self: center;
+    height: 70vh;
+    align-self: center;
 }
 
 .shape {
     grid-area: shape;
     align-self: center;
-    // justify-self: center;
 }
 
 .main {
@@ -106,7 +101,10 @@ button {
     margin: 0 5%;
     height: 28px;
     width: 60px;
-    background-color: #222;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 #shapeSelector {
@@ -126,21 +124,25 @@ span {
     grid-area: camera;
     display: grid;
     align-items: center;
-    // justify-content: center;
     grid-template-columns: 35% 68%;
     grid-template-rows: 2;
-    grid-template-areas: 
+    grid-template-areas:
         "cameraPosTitle cameraPosSlide"
         "cameraRotateTitle cameraRotate";
 }
 
 .cameraPosSlide {
-    // align-self: center;
-        justify-self: center;
+    justify-self: center;
 
 }
 
-.camera > span {
+.camera>span {
     margin: 0 0 0 9%;
 }
 
+#sun {
+    font-size: 22px;
+    margin: 14px;
+    display: none;
+    color: #f6f6f6;
+}

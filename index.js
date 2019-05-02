@@ -32,7 +32,7 @@ for (let x = -numBoxes; x <= numBoxes; x++) {
 		var material = new THREE.MeshStandardMaterial( );
 		var cube = new THREE.Mesh( geometry, material );
 		cube.position.x = x * 2;
-        cube.position.y = y * 2;
+		cube.position.y = y * 2;
 		boxes.push(cube);
 		scene.add(cube);
 	}
@@ -363,3 +363,98 @@ var animate = function () {
 };
 
 animate();
+
+
+let info = document.getElementsByClassName("info")[0];
+let modes = document.getElementsByClassName("mode");
+
+let sun = document.getElementById("sun");
+let moon = document.getElementById("moon");
+
+let inputs = document.getElementsByTagName("INPUT");
+let selects = document.getElementsByTagName("SELECT");
+let spans = document.getElementsByTagName("SPAN");
+
+let body = document.getElementsByTagName("BODY")[0];
+let buttons = document.getElementsByTagName("BUTTON");
+
+for (let i = 0, len = modes.length; i < len; i++) {
+	modes[i].addEventListener("click", () => toggleMode());
+}
+
+// tell which mode app is in
+let lightMode = true;
+
+// this function toggles through the two different modes [ day + night]
+// and changes styling
+let toggleMode = () => {
+
+	// light -> dark mode
+	if (lightMode) {
+
+		for (let i = 0, len = buttons.length; i < len; i++) {
+			buttons[i].style.backgroundColor = "#222";
+			buttons[i].style.color = "#f6f6f6";
+		}
+	
+		for (let i = 0, len = inputs.length; i < len; i++) {
+			inputs[i].style.backgroundColor = "#333";
+			inputs[i].style.color = "#f6f6f6";
+		}
+	
+		for (let i = 0, len = selects.length; i < len; i++) {
+			selects[i].style.backgroundColor = "#333";
+			selects[i].style.color = "#f6f6f6";
+		}
+	
+		for (let i = 0, len = spans.length; i < len; i++) {
+			spans[i].style.color = "#f6f6f6";
+		}
+		
+		body.style.backgroundColor = "#111";
+		info.style.color = "#f6f6f6";
+
+		lightMode = false;
+		moon.style.display = "none";
+		sun.style.display = "initial";
+
+	// dark -> light mode
+	} else {
+
+		for (let i = 0, len = buttons.length; i < len; i++) {
+			buttons[i].style.backgroundColor = "#fff";
+			buttons[i].style.color = "#000";
+		}
+	
+		for (let i = 0, len = inputs.length; i < len; i++) {
+			inputs[i].style.backgroundColor = "#fff";
+			inputs[i].style.color = "#000";
+		}
+	
+		for (let i = 0, len = selects.length; i < len; i++) {
+			selects[i].style.backgroundColor = "#fff";
+			selects[i].style.color = "#000";
+		}
+	
+		for (let i = 0, len = spans.length; i < len; i++) {
+			spans[i].style.color = "#000";
+		}
+		
+		body.style.backgroundColor = "#f6f6f6";
+		info.style.color = "#000";
+
+		lightMode = true;
+		sun.style.display = "none";
+		moon.style.display = "initial";
+
+	}
+
+
+
+
+
+	
+
+
+};
+
