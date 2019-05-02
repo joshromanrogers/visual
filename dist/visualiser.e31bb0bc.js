@@ -124,7 +124,7 @@ var sqrt = Math.sqrt;
 var abs = Math.abs;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 40;
+camera.position.z = 15;
 var renderer = new THREE.WebGLRenderer();
 renderer.domElement.id = "canvas";
 renderer.setSize(window.innerWidth / 100 * 70, window.innerHeight / 100 * 70);
@@ -159,9 +159,9 @@ var posZVal = 1;
 var scaleZVal = 1;
 var scaleXVal = 1;
 var scaleYVal = 1;
-var rotationZVal = 1;
-var rotationXVal = 1;
-var rotationYVal = 1;
+var rotationZVal = 0;
+var rotationXVal = 0;
+var rotationYVal = 0;
 var colRVal = 1;
 var colGVal = 1;
 var colBVal = 1;
@@ -553,7 +553,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53350" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50031" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

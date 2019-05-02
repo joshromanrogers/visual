@@ -5,7 +5,7 @@ var abs = Math.abs;
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-camera.position.z = 40;
+camera.position.z = 15;
 
 var renderer = new THREE.WebGLRenderer();
 renderer.domElement.id = "canvas";
@@ -43,9 +43,9 @@ let posZVal = 1;
 let scaleZVal = 1;
 let scaleXVal = 1;
 let scaleYVal = 1;
-let rotationZVal = 1;
-let rotationXVal = 1;
-let rotationYVal = 1;
+let rotationZVal = 0;
+let rotationXVal = 0;
+let rotationYVal = 0;
 let colRVal = 1;
 let colGVal = 1;
 let colBVal = 1;
