@@ -54,6 +54,7 @@ input {
     position: relative;
 }
 
+
 canvas {
     justify-self: center;
     align-self: center;
@@ -62,7 +63,7 @@ canvas {
 .container {
     display: grid;
     grid-template-columns: 1;
-    grid-template-rows: 10% 70% 15%;
+    grid-template-rows: 10% 80% 10%;
     grid-template-areas:
         "shape"
         "main"
@@ -151,7 +152,7 @@ span {
     position: fixed;
     width: 0;
     height: 100%;
-    font-size: 2em;
+    font-size: 3.5em;
     z-index: 1;
     top: 0;
     left: 0;
@@ -168,11 +169,8 @@ span {
         color: #f6f6f6;
       }
       a {
-        padding: 8px 8px 8px 32px;
         text-decoration: none;
-        font-size: 25px;
         color: #818181;
-        display: block;
         transition: 0.3s;
         transition: all .2s;
         &:hover {

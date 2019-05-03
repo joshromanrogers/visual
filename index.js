@@ -12,7 +12,7 @@ renderer.domElement.id = "canvas";
 renderer.setSize( window.innerWidth/100*70, window.innerHeight/100*70 );
 document.body.appendChild( renderer.domElement );
 
-var geometry = new THREE.BoxGeometry(1, 1, 1);
+var geometry = new THREE.DodecahedronGeometry(1, 1, 1);
 
 var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
 directionalLight.position.x = 1;
@@ -317,10 +317,10 @@ cameraPosZslider.oninput = function () {
 };
 
 
-let rotation = false;
+// let rotation = false;
 
-let rotationX = document.getElementById("cameraRotate");
-rotationX.addEventListener("click", () => rotation = true);
+// let rotationX = document.getElementById("cameraRotate");
+// rotationX.addEventListener("click", () => rotation = true);
 
 function updateBoxes(step) {
 	for (let i = 0; i < boxes.length; i++) {

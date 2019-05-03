@@ -129,7 +129,7 @@ var renderer = new THREE.WebGLRenderer();
 renderer.domElement.id = "canvas";
 renderer.setSize(window.innerWidth / 100 * 70, window.innerHeight / 100 * 70);
 document.body.appendChild(renderer.domElement);
-var geometry = new THREE.BoxGeometry(1, 1, 1);
+var geometry = new THREE.DodecahedronGeometry(1, 1, 1);
 var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.x = 1;
 scene.add(directionalLight);
@@ -389,13 +389,10 @@ cameraPosZoutput.innerHTML = cameraPosZslider.value; // Display the default slid
 cameraPosZslider.oninput = function () {
   cameraPosZoutput.innerHTML = this.value;
   camera.position.z = parseFloat(this.value);
-};
+}; // let rotation = false;
+// let rotationX = document.getElementById("cameraRotate");
+// rotationX.addEventListener("click", () => rotation = true);
 
-var rotation = false;
-var rotationX = document.getElementById("cameraRotate");
-rotationX.addEventListener("click", function () {
-  return rotation = true;
-});
 
 function updateBoxes(step) {
   for (var i = 0; i < boxes.length; i++) {
@@ -553,7 +550,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50031" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50395" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
