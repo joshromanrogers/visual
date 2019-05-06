@@ -222,4 +222,33 @@ a.website {
   padding: 0px;
   padding-top: 10px;
 }
+
+/* cover */
+.cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  background-color: black;
+}
+
+.cover-description {
+  position: absolute;
+  color: white;
+  font-size: 2em;
+  margin: 5%;
+}
+
+@media (max-width: 950px) {
+  .cover {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: 5;
+  }
+}
 /*# sourceMappingURL=main.css.map */
