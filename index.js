@@ -1,3 +1,4 @@
+
 // trig functions, square root and absolute
 var cos = Math.cos;
 var sin = Math.sin;
@@ -454,8 +455,6 @@ let toggleMode = () => {
 
 };
 
-// INFO
-
 let closeBtn = document.querySelector(".closebtn");
 let openBtn = document.querySelector(".info");
 
@@ -467,12 +466,9 @@ closeBtn.addEventListener("click", () => closeNav());
 function openNav() {
 	document.getElementById("side-nav").style.width = "100%";
 	document.querySelectorAll(".side-nav-p").forEach(x => x.style.width = "700px");
-
 }
-
 
 // Set the width of the side navigation to 0 
 function closeNav() {
 	document.getElementById("side-nav").style.width = "0";
 }
-
