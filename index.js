@@ -1,4 +1,4 @@
-
+import { TweenMax } from "gsap";
 // trig functions, square root and absolute
 var cos = Math.cos;
 var sin = Math.sin;
@@ -392,7 +392,7 @@ let lightMode = true;
 // this function toggles through the two different modes [ day + night]
 // and changes styling
 let toggleMode = () => {
-
+	TweenMax.fromTo("#body", 2, {opacity:0}, {opacity:1});
 	// light -> dark mode
 	if (lightMode) {
 
