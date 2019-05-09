@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "predeploy": "rm -rf dist && parcel build index.html --public-url ./",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +14,11 @@
   "dependencies": {
     "gsap": "^2.1.2",
     "parcel-bundler": "^1.12.3"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "gh-pages": "^2.0.1",
+    "install": "^0.12.2",
+    "npm": "^6.9.0"
   }
 }

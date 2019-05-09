@@ -1,4 +1,3 @@
-import { TweenMax } from "gsap";
 // trig functions, square root and absolute
 var cos = Math.cos;
 var sin = Math.sin;
