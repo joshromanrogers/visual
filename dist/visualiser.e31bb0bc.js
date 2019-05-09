@@ -118,25 +118,31 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
+// trig functions, square root and absolute
 var cos = Math.cos;
 var sin = Math.sin;
 var sqrt = Math.sqrt;
-var abs = Math.abs;
+var abs = Math.abs; // create new scene, camera + position it
+
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 15;
+camera.position.z = 15; // render new canvas, set size + place in HTML
+
 var renderer = new THREE.WebGLRenderer();
 renderer.domElement.id = "canvas";
 renderer.setSize(window.innerWidth / 100 * 70, window.innerHeight / 100 * 70);
-document.body.appendChild(renderer.domElement);
-var geometry = new THREE.DodecahedronGeometry(1, 1, 1);
+document.body.appendChild(renderer.domElement); // intial shape to be built
+
+var geometry = new THREE.DodecahedronGeometry(1, 1, 1); // create lights + add to scene
+
 var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.x = 1;
-scene.add(directionalLight);
 var light = new THREE.AmbientLight(0xffffff);
-scene.add(light);
+scene.add(directionalLight);
+scene.add(light); // boxes array + number per line
+
 var boxes = [];
-var numBoxes = 5;
+var numBoxes = 5; // build a square of cubes, add to array and then push to scene
 
 for (var x = -numBoxes; x <= numBoxes; x++) {
   for (var y = -numBoxes; y <= numBoxes; y++) {
@@ -153,7 +159,7 @@ for (var x = -numBoxes; x <= numBoxes; x++) {
 
 var vector = new THREE.Vector3(); // create once and reuse it!
 
-camera.getWorldDirection(vector); // initial values
+camera.getWorldDirection(vector); // initial shape values
 
 var posZVal = 1;
 var scaleZVal = 1;
@@ -164,52 +170,62 @@ var rotationXVal = 0;
 var rotationYVal = 0;
 var colRVal = 1;
 var colGVal = 1;
-var colBVal = 1;
+var colBVal = 1; // add click listener to take value from posZ input and update value of posZ
+
 var posZValIn = document.getElementById("posZInput");
 var posZBtn = document.getElementById("posZBtn");
 posZBtn.addEventListener("click", function () {
   posZVal = posZValIn.value;
-});
-var scaleZValIn = document.getElementById("scaleZInput");
-var scaleZBtn = document.getElementById("scaleZBtn");
-scaleZBtn.addEventListener("click", function () {
-  scaleZVal = scaleZValIn.value;
-});
+}); // add click listener to take value from scaleX input and update value of scaleX
+
 var scaleXValIn = document.getElementById("scaleXInput");
 var scaleXBtn = document.getElementById("scaleXBtn");
 scaleXBtn.addEventListener("click", function () {
   scaleXVal = scaleXValIn.value;
-});
+}); // add click listener to take value from scaleY input and update value of scaleY
+
 var scaleYValIn = document.getElementById("scaleYInput");
 var scaleYBtn = document.getElementById("scaleYBtn");
 scaleYBtn.addEventListener("click", function () {
   scaleYVal = scaleYValIn.value;
-});
-var rotationZValIn = document.getElementById("rotationZInput");
-var rotationZBtn = document.getElementById("rotationZBtn");
-rotationZBtn.addEventListener("click", function () {
-  rotationZVal = rotationZValIn.value;
-});
+}); // add click listener to take value from scaleZ input and update value of scaleZ
+
+var scaleZValIn = document.getElementById("scaleZInput");
+var scaleZBtn = document.getElementById("scaleZBtn");
+scaleZBtn.addEventListener("click", function () {
+  scaleZVal = scaleZValIn.value;
+}); // add click listener to take value from rotX input and update value of rotX
+
 var rotationXValIn = document.getElementById("rotationXInput");
 var rotationXBtn = document.getElementById("rotationXBtn");
 rotationXBtn.addEventListener("click", function () {
   rotationXVal = rotationXValIn.value;
-});
+}); // add click listener to take value from rotY input and update value of rotY
+
 var rotationYValIn = document.getElementById("rotationYInput");
 var rotationYBtn = document.getElementById("rotationYBtn");
 rotationYBtn.addEventListener("click", function () {
   rotationYVal = rotationYValIn.value;
-});
+}); // add click listener to take value from rotZ input and update value of rotZ
+
+var rotationZValIn = document.getElementById("rotationZInput");
+var rotationZBtn = document.getElementById("rotationZBtn");
+rotationZBtn.addEventListener("click", function () {
+  rotationZVal = rotationZValIn.value;
+}); // add click listener to take value from colR input and update value of colR
+
 var colRValIn = document.getElementById("colRInput");
 var colRBtn = document.getElementById("colRBtn");
 colRBtn.addEventListener("click", function () {
   colRVal = colRValIn.value;
-});
+}); // add click listener to take value from colG input and update value of colG
+
 var colGValIn = document.getElementById("colGInput");
 var colGBtn = document.getElementById("colGBtn");
 colGBtn.addEventListener("click", function () {
   colGVal = colGValIn.value;
-});
+}); // add click listener to take value from colB input and update value of colB
+
 var colBValIn = document.getElementById("colBInput");
 var colBBtn = document.getElementById("colBBtn");
 colBBtn.addEventListener("click", function () {
@@ -305,12 +321,16 @@ function setBoxColorB(box, step, colBVal) {
   var md = abs(x) + abs(y);
   var d = sqrt(x * x + y * y);
   box.material.color.b = eval(valueB);
-}
+} // when user changes the value in the shape selector, run setShape function
+
 
 var shapeSelector = document.getElementById("shapeSelector");
 shapeSelector.addEventListener("change", function () {
   return setShape();
-});
+}); // 1. switch statement
+// 2. dispose of every shape
+// 3. create new geometry of chosen shape
+// 4. clone the geometry
 
 function setShape() {
   switch (shapeSelector.value) {
@@ -389,9 +409,7 @@ cameraPosZoutput.innerHTML = cameraPosZslider.value; // Display the default slid
 cameraPosZslider.oninput = function () {
   cameraPosZoutput.innerHTML = this.value;
   camera.position.z = parseFloat(this.value);
-}; // let rotation = false;
-// let rotationX = document.getElementById("cameraRotate");
-// rotationX.addEventListener("click", () => rotation = true);
+}; // updates all of the possible values of the shapes, if they have changed
 
 
 function updateBoxes(step) {
@@ -407,7 +425,8 @@ function updateBoxes(step) {
     setBoxColorG(boxes[i], step, colGVal);
     setBoxColorB(boxes[i], step, colBVal);
   }
-}
+} // initialise step
+
 
 var step = 0;
 
@@ -415,13 +434,7 @@ var animate = function animate() {
   requestAnimationFrame(animate);
   step += 0.05;
   updateBoxes(step);
-  renderer.render(scene, camera); // if(rotation) {
-  // 	// Use Math.cos and Math.sin to set camera X and Z values based on angle. 
-  // 	camera.position.x = angle;
-  // 	// camera.position.z = radius * Math.sin( angle );
-  // 	camera.position.y = angle;
-  // 	angle += 0.05;
-  // }
+  renderer.render(scene, camera);
 };
 
 animate();
@@ -550,7 +563,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53044" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56378" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

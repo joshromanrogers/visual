@@ -1,29 +1,35 @@
+// trig functions, square root and absolute
 var cos = Math.cos;
 var sin = Math.sin;
 var sqrt = Math.sqrt;
 var abs = Math.abs;
 
+// create new scene, camera + position it
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.z = 15;
 
+// render new canvas, set size + place in HTML
 var renderer = new THREE.WebGLRenderer();
 renderer.domElement.id = "canvas";
 renderer.setSize( window.innerWidth/100*70, window.innerHeight/100*70 );
 document.body.appendChild( renderer.domElement );
 
+// intial shape to be built
 var geometry = new THREE.DodecahedronGeometry(1, 1, 1);
 
+// create lights + add to scene
 var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
 directionalLight.position.x = 1;
-scene.add( directionalLight );
-
 var light = new THREE.AmbientLight( 0xffffff );
+scene.add( directionalLight );
 scene.add(light);
 
+// boxes array + number per line
 var boxes = [];
 var numBoxes = 5;
 
+// build a square of cubes, add to array and then push to scene
 for (let x = -numBoxes; x <= numBoxes; x++) {
 	for (let y = -numBoxes; y <= numBoxes; y++) {
 		var material = new THREE.MeshBasicMaterial( { color : 0xff0000 } );
@@ -38,7 +44,7 @@ for (let x = -numBoxes; x <= numBoxes; x++) {
 var vector = new THREE.Vector3(); // create once and reuse it!
 camera.getWorldDirection( vector );
 
-// initial values
+// initial shape values
 let posZVal = 1;
 let scaleZVal = 1;
 let scaleXVal = 1;
@@ -50,60 +56,70 @@ let colRVal = 1;
 let colGVal = 1;
 let colBVal = 1;
 
+// add click listener to take value from posZ input and update value of posZ
 let posZValIn = document.getElementById("posZInput");
 let posZBtn = document.getElementById("posZBtn");
 posZBtn.addEventListener("click", function() {
 	posZVal = posZValIn.value;
 });
 
-let scaleZValIn = document.getElementById("scaleZInput");
-let scaleZBtn = document.getElementById("scaleZBtn");
-scaleZBtn.addEventListener("click", function() {
-	scaleZVal = scaleZValIn.value;
-});
-
+// add click listener to take value from scaleX input and update value of scaleX
 let scaleXValIn = document.getElementById("scaleXInput");
 let scaleXBtn = document.getElementById("scaleXBtn");
 scaleXBtn.addEventListener("click", function() {
 	scaleXVal = scaleXValIn.value;
 });
 
+// add click listener to take value from scaleY input and update value of scaleY
 let scaleYValIn = document.getElementById("scaleYInput");
 let scaleYBtn = document.getElementById("scaleYBtn");
 scaleYBtn.addEventListener("click", function() {
 	scaleYVal = scaleYValIn.value;
 });
 
-let rotationZValIn = document.getElementById("rotationZInput");
-let rotationZBtn = document.getElementById("rotationZBtn");
-rotationZBtn.addEventListener("click", function() {
-	rotationZVal = rotationZValIn.value;
+// add click listener to take value from scaleZ input and update value of scaleZ
+let scaleZValIn = document.getElementById("scaleZInput");
+let scaleZBtn = document.getElementById("scaleZBtn");
+scaleZBtn.addEventListener("click", function() {
+	scaleZVal = scaleZValIn.value;
 });
 
+// add click listener to take value from rotX input and update value of rotX
 let rotationXValIn = document.getElementById("rotationXInput");
 let rotationXBtn = document.getElementById("rotationXBtn");
 rotationXBtn.addEventListener("click", function() {
 	rotationXVal = rotationXValIn.value;
 });
 
+// add click listener to take value from rotY input and update value of rotY
 let rotationYValIn = document.getElementById("rotationYInput");
 let rotationYBtn = document.getElementById("rotationYBtn");
 rotationYBtn.addEventListener("click", function() {
 	rotationYVal = rotationYValIn.value;
 });
 
+// add click listener to take value from rotZ input and update value of rotZ
+let rotationZValIn = document.getElementById("rotationZInput");
+let rotationZBtn = document.getElementById("rotationZBtn");
+rotationZBtn.addEventListener("click", function() {
+	rotationZVal = rotationZValIn.value;
+});
+
+// add click listener to take value from colR input and update value of colR
 let colRValIn = document.getElementById("colRInput");
 let colRBtn = document.getElementById("colRBtn");
 colRBtn.addEventListener("click", function() {
 	colRVal = colRValIn.value;
 });
 
+// add click listener to take value from colG input and update value of colG
 let colGValIn = document.getElementById("colGInput");
 let colGBtn = document.getElementById("colGBtn");
 colGBtn.addEventListener("click", function() {
 	colGVal = colGValIn.value;
 });
 
+// add click listener to take value from colB input and update value of colB
 let colBValIn = document.getElementById("colBInput");
 let colBBtn = document.getElementById("colBBtn");
 colBBtn.addEventListener("click", function() {
@@ -230,10 +246,14 @@ function setBoxColorB(box, step, colBVal) {
 	box.material.color.b = eval(valueB);
 }
 
-
+// when user changes the value in the shape selector, run setShape function
 let shapeSelector = document.getElementById("shapeSelector");
 shapeSelector.addEventListener("change", () => setShape());
 
+// 1. switch statement
+// 2. dispose of every shape
+// 3. create new geometry of chosen shape
+// 4. clone the geometry
 function setShape() {
 	switch (shapeSelector.value) {
       
@@ -316,12 +336,7 @@ cameraPosZslider.oninput = function () {
   
 };
 
-
-// let rotation = false;
-
-// let rotationX = document.getElementById("cameraRotate");
-// rotationX.addEventListener("click", () => rotation = true);
-
+// updates all of the possible values of the shapes, if they have changed
 function updateBoxes(step) {
 	for (let i = 0; i < boxes.length; i++) {
     
@@ -339,7 +354,7 @@ function updateBoxes(step) {
 	}
 }
 
-
+// initialise step
 let step = 0;
 
 var animate = function () {
@@ -349,14 +364,6 @@ var animate = function () {
 	updateBoxes (step);
 	renderer.render( scene, camera );
   
-	// if(rotation) {
-	// 	// Use Math.cos and Math.sin to set camera X and Z values based on angle. 
-	// 	camera.position.x = angle;
-	// 	// camera.position.z = radius * Math.sin( angle );
-	// 	camera.position.y = angle;
-  
-	// 	angle += 0.05;
-	// }
 };
 
 animate();
