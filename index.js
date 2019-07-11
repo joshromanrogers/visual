@@ -1,3 +1,28 @@
+var loader = new THREE.FontLoader();
+
+
+let pressure;
+let temp;
+let tempMax;
+let tempMin;
+
+let url = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=c434aece31b299f094dd437721ce40bd';
+fetch(url)
+.then(res => res.json())
+.then((out) => {
+  console.log('Checkout this JSON! ', out);
+  gotData(out);
+})
+.catch(err => { throw err });
+
+function gotData(data) {
+    console.log('gotdata', data.main);
+    pressure = data.main.pressure;
+    temp = data.main.temp;
+    tempMax = data.main.temp_max;
+    tempMin = data.main.temp_min;
+}
+
 // trig functions, square root and absolute
 var cos = Math.cos;
 var sin = Math.sin;
@@ -82,6 +107,7 @@ let scaleZValIn = document.getElementById("scaleZInput");
 let scaleZBtn = document.getElementById("scaleZBtn");
 scaleZBtn.addEventListener("click", function() {
 	scaleZVal = scaleZValIn.value;
+	console.log(pressure, temp);
 });
 
 // add click listener to take value from rotX input and update value of rotX
@@ -135,6 +161,8 @@ function setBoxPosZ(box, step, posZVal) {
 	let md = abs(x) + abs(y);
 	let d = sqrt(x*x + y*y);
 	let cos = Math.cos;
+	let p = pressure;
+	let temp = temp;
   
 	box.position.z = eval(value);
   
@@ -471,3 +499,4 @@ function openNav() {
 function closeNav() {
 	document.getElementById("side-nav").style.width = "0";
 }
+
